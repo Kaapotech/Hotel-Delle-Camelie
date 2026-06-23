@@ -7,7 +7,7 @@ export const site = {
   tagline: "Eleganza senza tempo",
   location: "Firenze, Italia",
   email: "info@hoteldellecamelie.it",
-  phone: "+39 055 000 000",
+  phone: "+39 055 472 856",
   address: "Via Di Barbano 10, 50129 Florence, Italy",
 
   // Piattaforme di prenotazione
