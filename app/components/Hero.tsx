@@ -124,13 +124,13 @@ export default function Hero() {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#booking"
-            className="hero-cta rounded-full bg-rose px-8 py-3.5 text-sm uppercase tracking-[0.2em] text-cream shadow-lg shadow-rose/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-rose-light hover:text-espresso"
+            className="hero-cta rounded-full bg-rose px-8 py-3.5 text-center text-sm uppercase tracking-[0.2em] text-cream shadow-lg shadow-rose/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-rose-light hover:text-espresso"
           >
             Prenota il soggiorno
           </a>
           <a
             href="#about"
-            className="hero-cta rounded-full border border-cream/40 px-8 py-3.5 text-sm uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:border-gold hover:text-gold-light"
+            className="hero-cta rounded-full border border-cream/40 px-8 py-3.5 text-center text-sm uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:border-gold hover:text-gold-light"
           >
             Scopri l&apos;hotel
           </a>
