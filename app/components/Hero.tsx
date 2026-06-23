@@ -12,31 +12,48 @@ export default function Hero() {
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Tutti gli elementi animati in entrata. Servono anche come rete di
+    // sicurezza: se la timeline non dovesse completarsi (StrictMode/HMR,
+    // ticker fermo, ecc.) li forziamo comunque visibili.
+    const introTargets =
+      ".hero-eyebrow, .hero-line, .hero-script, .hero-sub, .hero-cta, .hero-scroll";
+
     const ctx = gsap.context(() => {
+      // Stato iniziale (nascosto) impostato in modo ESPLICITO: così l'ordine
+      // di render è deterministico e nessun elemento può "restare nascosto"
+      // come succedeva con i .from() su StrictMode/HMR.
+      gsap.set(".hero-eyebrow", { y: 24, opacity: 0 });
+      gsap.set(".hero-line", { yPercent: 120, opacity: 0 });
+      gsap.set(".hero-script", { scale: 0.8, opacity: 0 });
+      gsap.set(".hero-sub", { y: 20, opacity: 0 });
+      gsap.set(".hero-cta", { y: 20, opacity: 0 });
+      gsap.set(".hero-scroll", { opacity: 0 });
+
       // Timeline d'ingresso
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
         delay: 0.35,
+        onComplete: () => {
+          // Stato finale pulito: niente opacity/transform residui inline
+          gsap.set(introTargets, { clearProps: "opacity,transform" });
+        },
       });
 
-      tl.from(".hero-eyebrow", { y: 24, opacity: 0, duration: 0.9 })
-        .from(
+      tl.to(".hero-eyebrow", { y: 0, opacity: 1, duration: 0.9 })
+        .to(
           ".hero-line",
-          { yPercent: 120, opacity: 0, duration: 1.1, stagger: 0.12 },
+          { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.12 },
           "-=0.4",
         )
-        .from(
+        .to(
           ".hero-script",
-          { scale: 0.8, opacity: 0, duration: 1, ease: "back.out(1.6)" },
+          { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.6)" },
           "-=0.7",
         )
-        .from(".hero-sub", { y: 20, opacity: 0, duration: 0.9 }, "-=0.5")
-        .from(
-          ".hero-cta",
-          { y: 20, opacity: 0, duration: 0.8, stagger: 0.15 },
-          "-=0.5",
-        )
-        .from(".hero-scroll", { opacity: 0, duration: 1 }, "-=0.3");
+        .to(".hero-sub", { y: 0, opacity: 1, duration: 0.9 }, "-=0.5")
+        // I due pulsanti compaiono INSIEME (nessuno stagger)
+        .to(".hero-cta", { y: 0, opacity: 1, duration: 0.8 }, "-=0.5")
+        .to(".hero-scroll", { opacity: 1, duration: 1 }, "-=0.3");
 
       // Parallax al variare dello scroll
       gsap.to(".hero-bg", {
@@ -72,7 +89,23 @@ export default function Hero() {
       });
     }, root);
 
-    return () => ctx.revert();
+    // Rete di sicurezza: qualunque cosa accada all'animazione, dopo 4.5s il
+    // contenuto (titolo, sottotitolo, pulsanti) deve essere visibile.
+    // (la timeline normale finisce intorno ai 3.8s)
+    const failsafe = window.setTimeout(() => {
+      gsap.set(introTargets, {
+        opacity: 1,
+        y: 0,
+        yPercent: 0,
+        scale: 1,
+        clearProps: "transform",
+      });
+    }, 4500);
+
+    return () => {
+      window.clearTimeout(failsafe);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -124,7 +157,7 @@ export default function Hero() {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#booking"
-            className="hero-cta rounded-full bg-rose px-8 py-3.5 text-center text-sm uppercase tracking-[0.2em] text-cream shadow-lg shadow-rose/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-rose-light hover:text-espresso"
+            className="hero-cta rounded-full bg-rose px-8 py-3.5 text-center text-sm uppercase tracking-[0.2em] text-cream shadow-lg shadow-rose/30 transition-colors duration-300 hover:bg-rose-light hover:text-espresso"
           >
             Prenota il soggiorno
           </a>
