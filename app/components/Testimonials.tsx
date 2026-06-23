@@ -23,6 +23,36 @@ const reviews = [
     text: "Eleganza senza tempo è il nome perfetto. Arredi splendidi e un giardino incantevole. Sembra di vivere in un romanzo del secolo scorso.",
     rating: 5,
   },
+  {
+    name: "Sophie Laurent",
+    location: "Parigi, Francia",
+    text: "Posizione impeccabile, a due passi dal Duomo. La camera con balcone era luminosa e curata nei minimi dettagli. Un piccolo gioiello fiorentino.",
+    rating: 5,
+  },
+  {
+    name: "James Whitfield",
+    location: "Londra, Regno Unito",
+    text: "Booked directly and got the best rate. Charming vintage rooms, spotless and quiet. The breakfast alone is worth the stay. Highly recommended.",
+    rating: 5,
+  },
+  {
+    name: "Marta Sánchez",
+    location: "Madrid, Spagna",
+    text: "Personale gentilissimo e sempre disponibile per consigli sulla città. L'atmosfera è romantica e accogliente. Torneremo senza dubbio.",
+    rating: 5,
+  },
+  {
+    name: "Lukas Novák",
+    location: "Praga, Repubblica Ceca",
+    text: "Ottimo rapporto qualità-prezzo nel cuore di Firenze. Wi-Fi veloce, letti comodissimi e una colazione abbondante. Soggiorno davvero piacevole.",
+    rating: 4,
+  },
+  {
+    name: "Hiroshi Tanaka",
+    location: "Tokyo, Giappone",
+    text: "Un'esperienza autentica lontana dai grandi alberghi anonimi. Ci siamo sentiti ospiti di casa. Il giardino delle camelie è semplicemente poetico.",
+    rating: 5,
+  },
 ];
 
 export default function Testimonials() {
