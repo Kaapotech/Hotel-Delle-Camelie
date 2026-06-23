@@ -42,8 +42,8 @@ export default function Gallery() {
           </h2>
           <Divider className="mt-6" />
           <p className="mx-auto mt-6 max-w-xl text-espresso-soft">
-            O incursiune vizuală prin camerele și spațiile noastre rafinate,
-            unde eleganța istorică întâlnește confortul modern.
+            Un viaggio visivo tra le nostre camere e gli spazi raffinati, dove
+            l&apos;eleganza storica incontra il comfort moderno.
           </p>
         </div>
 

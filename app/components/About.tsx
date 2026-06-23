@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Divider from "./Divider";
-import MockPhoto from "./MockPhoto";
 import Reveal from "./Reveal";
 
 const stats = [
@@ -21,18 +21,26 @@ export default function About() {
         </Reveal>
 
         <div className="mt-16 grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          {/* Immagini */}
+          {/* Immagini — sostituibili con foto reali di facciata e giardino */}
           <Reveal from="right" className="relative">
-            <MockPhoto
-              label="La facciata storica"
-              variant={0}
-              className="aspect-[4/5] w-full rounded-sm shadow-2xl shadow-forest/20"
-            />
-            <MockPhoto
-              label="Il giardino delle camelie"
-              variant={1}
-              className="absolute -bottom-10 -right-6 hidden aspect-square w-44 rounded-sm border-4 border-cream shadow-xl sm:block lg:w-56"
-            />
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm shadow-2xl shadow-forest/20">
+              <Image
+                src="/room1.jpg"
+                alt="La facciata storica dell'Hotel Delle Camelie"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="absolute -bottom-10 -right-6 hidden aspect-square w-44 overflow-hidden rounded-sm border-4 border-cream shadow-xl sm:block lg:w-56">
+              <Image
+                src="/room3.jpg"
+                alt="Il giardino delle camelie"
+                fill
+                className="object-cover"
+                sizes="224px"
+              />
+            </div>
           </Reveal>
 
           {/* Testo */}

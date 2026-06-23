@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { navLinks, site } from "../lib/site";
+import { navLinks } from "../lib/site";
 import Camellia from "./Camellia";
 
 export default function Navbar() {
@@ -129,9 +129,8 @@ export default function Navbar() {
               ))}
               <li className="pt-3">
                 <a
-                  href={site.booking.bookingCom}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#booking"
+                  onClick={() => setOpen(false)}
                   className="block rounded-full bg-forest py-3 text-center text-sm uppercase tracking-[0.2em] text-cream"
                 >
                   Prenota ora
