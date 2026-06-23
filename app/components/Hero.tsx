@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { site } from "../lib/site";
 import Camellia from "./Camellia";
+import { StarIcon } from "./Icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -114,14 +117,19 @@ export default function Hero() {
       ref={root}
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Sfondo a strati */}
-      <div
-        className="hero-bg absolute inset-0 scale-110"
-        style={{
-          backgroundImage:
-            "linear-gradient(160deg, #243a2c 0%, #2e4636 45%, #3a2f28 100%)",
-        }}
-      />
+      {/* Sfondo: foto reale con parallax */}
+      <div className="hero-bg absolute inset-0 scale-110">
+        <Image
+          src="/room1.jpg"
+          alt="Una camera elegante dell'Hotel Delle Camelie a Firenze"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+      {/* Velatura scura per la leggibilità del testo */}
+      <div className="absolute inset-0 bg-gradient-to-b from-espresso/80 via-forest/55 to-espresso/85" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(176,141,87,0.22),transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_85%,rgba(183,110,121,0.25),transparent_55%)]" />
 
@@ -134,9 +142,14 @@ export default function Hero() {
 
       {/* Contenuto */}
       <div className="hero-content relative z-10 mx-auto max-w-4xl px-6 text-center text-cream">
-        <p className="hero-eyebrow eyebrow text-gold-light">
-          {site.location}
-        </p>
+        <div className="hero-eyebrow flex items-center justify-center gap-3">
+          <span className="flex gap-0.5 text-gold-light" aria-label="Quattro stelle">
+            {[0, 1, 2, 3].map((i) => (
+              <StarIcon key={i} className="h-3.5 w-3.5" />
+            ))}
+          </span>
+          <span className="eyebrow text-gold-light">{site.location}</span>
+        </div>
 
         <h1 className="mt-6 font-display text-5xl leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
@@ -149,25 +162,34 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="hero-sub mx-auto mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-xl">
-          Un rifugio dal fascino vintage dove l&apos;ospitalità autentica
-          incontra l&apos;eleganza di un&apos;altra epoca.
+        <p className="hero-sub mx-auto mt-6 max-w-xl text-lg leading-relaxed text-cream/90 sm:text-xl">
+          Camere eleganti a due passi dal Duomo. Colazione inclusa e
+          <span className="text-gold-light"> miglior prezzo garantito</span>.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#booking"
-            className="hero-cta rounded-full bg-rose px-8 py-3.5 text-center text-sm uppercase tracking-[0.2em] text-cream shadow-lg shadow-rose/30 transition-colors duration-300 hover:bg-rose-light hover:text-espresso"
+          <Link
+            href="/prenota"
+            className="hero-cta rounded-full bg-rose px-9 py-4 text-center text-sm uppercase tracking-[0.2em] text-cream shadow-lg shadow-rose/30 transition-colors duration-300 hover:bg-rose-light hover:text-espresso"
           >
-            Prenota il soggiorno
-          </a>
-          <a
-            href="#about"
-            className="hero-cta rounded-full border border-cream/40 px-8 py-3.5 text-center text-sm uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:border-gold hover:text-gold-light"
+            Prenota ora
+          </Link>
+          <Link
+            href="/camere"
+            className="hero-cta rounded-full border border-cream/40 px-9 py-4 text-center text-sm uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:border-gold hover:text-gold-light"
           >
-            Scopri l&apos;hotel
-          </a>
+            Scopri le camere
+          </Link>
         </div>
+
+        {/* Micro trust signals */}
+        <p className="hero-sub mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.18em] text-cream/75">
+          <span>Cancellazione gratuita</span>
+          <span className="text-gold-light">·</span>
+          <span>Prenotazione diretta</span>
+          <span className="text-gold-light">·</span>
+          <span>Wi-Fi gratuito</span>
+        </p>
       </div>
 
       {/* indicatore di scorrimento */}

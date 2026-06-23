@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, EB_Garamond, Pinyon_Script } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const playfair = Playfair_Display({
   variable: "--font-display",
@@ -51,7 +53,9 @@ export default function RootLayout({
       className={`${playfair.variable} ${garamond.variable} ${pinyon.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-espresso font-body">
-        {children}
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

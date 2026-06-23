@@ -1,7 +1,7 @@
+import Link from "next/link";
 import Camellia from "./Camellia";
 import Divider from "./Divider";
 import Reveal from "./Reveal";
-import { site } from "../lib/site";
 
 const rooms = [
   {
@@ -160,10 +160,8 @@ export default function Prices() {
                   ))}
                 </ul>
 
-                <a
-                  href={site.booking.bookingCom}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/prenota"
                   className={`mt-8 block rounded-full py-3 text-center text-sm uppercase tracking-[0.2em] transition-colors duration-300 ${
                     room.featured
                       ? "bg-rose text-cream hover:bg-rose-light hover:text-espresso"
@@ -171,7 +169,7 @@ export default function Prices() {
                   }`}
                 >
                   Prenota
-                </a>
+                </Link>
               </article>
             </Reveal>
           ))}

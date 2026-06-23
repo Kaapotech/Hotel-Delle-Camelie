@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Camellia from "./Camellia";
 import {
   FacebookIcon,
@@ -59,14 +60,30 @@ export default function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a
+                  <Link
                     href={l.href}
                     className="text-cream/70 transition-colors hover:text-gold-light"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/galleria"
+                  className="text-cream/70 transition-colors hover:text-gold-light"
+                >
+                  Galleria
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/prenota"
+                  className="text-cream/70 transition-colors hover:text-gold-light"
+                >
+                  Prenota
+                </Link>
+              </li>
             </ul>
           </div>
 

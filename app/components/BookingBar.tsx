@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { CalendarIcon, UsersIcon } from "./Icons";
 
 /**
@@ -42,12 +43,12 @@ export default function BookingBar() {
             </select>
           </label>
 
-          <a
-            href="#booking"
+          <Link
+            href="/prenota"
             className="flex items-center justify-center rounded-sm bg-rose px-7 py-3 text-sm uppercase tracking-[0.18em] text-cream transition-colors duration-300 hover:bg-forest md:h-[46px]"
           >
             Verifica disponibilità
-          </a>
+          </Link>
         </div>
       </div>
     </div>

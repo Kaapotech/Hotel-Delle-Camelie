@@ -81,6 +81,22 @@ body {
   font-weight: 600;
 }
 
+/* Entrata morbida della navbar — pura CSS, così la barra è SEMPRE visibile e
+   cliccabile anche se il JS non parte (browser in-app, connessioni lente). */
+@keyframes navbar-in {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.navbar-in {
+  animation: navbar-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Rispetta le preferenze di riduzione del movimento */
 @media (prefers-reduced-motion: reduce) {
   html {

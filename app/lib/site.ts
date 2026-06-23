@@ -31,11 +31,11 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { label: "L'Hotel", href: "#about" },
-  { label: "Camere", href: "#prices" },
-  { label: "Servizi", href: "#facilities" },
-  { label: "Posizione", href: "#location" },
-  { label: "Recensioni", href: "#testimonials" },
+  { label: "L'Hotel", href: "/hotel" },
+  { label: "Camere", href: "/camere" },
+  { label: "Servizi", href: "/servizi" },
+  { label: "Posizione", href: "/posizione" },
+  { label: "Recensioni", href: "/recensioni" },
 ] as const;
 
 /** Punti di forza mostrati subito sotto l'hero (regola 1 + trust). */
